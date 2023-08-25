@@ -1,4 +1,4 @@
-# Makefile for your multithreaded CPU monitor program
+
 
 CC = gcc
 CFLAGS = -Wall -Wextra

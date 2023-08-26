@@ -1,6 +1,8 @@
 #include "reader.h"
 #include <string.h>
 #include "cpu_monitor.h"
+#include <assert.h>
+
 
 
 void* Reader(void* arg) {
@@ -8,10 +10,8 @@ void* Reader(void* arg) {
 
     while (1) {
         FILE* file = fopen("/proc/stat", "r");
-        if (!file) {
-            fprintf(stderr, "Error opening /proc/stat file.\n");
-            exit(EXIT_FAILURE);
-        }
+
+        assert(file != NULL && "Error opening /proc/stat file.\n");
 
         char buffer[256];
         int cpu_id = 0;
@@ -25,7 +25,9 @@ void* Reader(void* arg) {
                        &cpu_stats[cpu_id].softirq, &cpu_stats[cpu_id].steal);  //+5 to eliminate "cpu_..."
                 cpu_id++;
             }
+            //check_cpu_stats(cpu_stats);
         }
+
 
         fclose(file);
 

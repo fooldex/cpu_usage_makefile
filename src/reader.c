@@ -20,11 +20,13 @@ void* Reader(void* arg) {
 
         while (fgets(buffer, sizeof(buffer), file) && cpu_id <= NUM_CPU_CORES) {
             if (strncmp(buffer, "cpu", 3) == 0) {   //if there is "cpu" in the line
-                sscanf(buffer + 5, "%llu %llu %llu %llu %llu %llu %llu %llu",
+                int result = sscanf(buffer + 5, "%llu %llu %llu %llu %llu %llu %llu %llu",
                        &cpu_stats[cpu_id].user, &cpu_stats[cpu_id].nice,
                        &cpu_stats[cpu_id].system, &cpu_stats[cpu_id].idle,
                        &cpu_stats[cpu_id].iowait, &cpu_stats[cpu_id].irq,
                        &cpu_stats[cpu_id].softirq, &cpu_stats[cpu_id].steal);  //+5 to eliminate "cpu_..."
+                assert(result == 8 && "Error parsing values from /proc/stat file.");
+                
                 cpu_id++;
             }
             

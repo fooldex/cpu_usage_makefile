@@ -1,6 +1,7 @@
 #include "analyzer.h"
 #include "cpu_monitor.h"
 #include "num_cpu_cores.h"
+#include <assert.h>
 
 void* Analyzer(void* arg) {
     CPUStats* cpu_stats = (CPUStats*)arg;
@@ -50,6 +51,8 @@ void* Analyzer(void* arg) {
 
             
             cpu_stats[core_id].CPU_Usage = ((double)(totald - idled) / totald) * 100.0;
+
+            assert(cpu_stats[core_id].CPU_Usage >= 0 && cpu_stats[core_id].CPU_Usage <= 100);
 
             //printf("idle %llu \n", cpu_stats[core_id].idle);
 

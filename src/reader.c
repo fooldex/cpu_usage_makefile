@@ -3,7 +3,7 @@
 #include "cpu_monitor.h"
 #include <assert.h>
 
-
+//Reader thread
 
 void* Reader(void* arg) {
     CPUStats* cpu_stats = (CPUStats*)arg;

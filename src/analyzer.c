@@ -1,5 +1,6 @@
 #include "analyzer.h"
 #include "cpu_monitor.h"
+#include "num_cpu_cores.h"
 
 void* Analyzer(void* arg) {
     CPUStats* cpu_stats = (CPUStats*)arg;
@@ -47,7 +48,12 @@ void* Analyzer(void* arg) {
             unsigned long long idled = Idle - PrevIdle;
 
 
+            
             cpu_stats[core_id].CPU_Usage = ((double)(totald - idled) / totald) * 100.0;
+
+            //printf("idle %llu \n", cpu_stats[core_id].idle);
+
+            //printf("idle %llu \n", prev_cpu_stats[core_id].idle);
 
 
             prev_cpu_stats[core_id] = cpu_stats[core_id];

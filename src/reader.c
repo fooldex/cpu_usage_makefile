@@ -2,8 +2,10 @@
 #include <string.h>
 #include "cpu_monitor.h"
 #include <assert.h>
+#include "num_cpu_cores.h"
 
 //Reader thread
+
 
 void* Reader(void* arg) {
     CPUStats* cpu_stats = (CPUStats*)arg;
@@ -25,9 +27,9 @@ void* Reader(void* arg) {
                        &cpu_stats[cpu_id].softirq, &cpu_stats[cpu_id].steal);  //+5 to eliminate "cpu_..."
                 cpu_id++;
             }
-            //check_cpu_stats(cpu_stats);
+            
         }
-
+        
 
         fclose(file);
 

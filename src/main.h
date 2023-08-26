@@ -8,7 +8,9 @@
 #include <signal.h>
 
 #define INTERVAL 1  
-#define NUM_CPU_CORES sysconf(_SC_NPROCESSORS_ONLN)
+
+
+
 
 typedef struct {
     unsigned long long user, prevuser;

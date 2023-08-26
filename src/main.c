@@ -3,16 +3,14 @@
 #include "analyzer.h"
 #include "printer.h"
 #include "cpu_monitor.h"
+#include "num_cpu_cores.h"
 
 int main() {
-    long num_cores = NUM_CPU_CORES;
+    
+    
+    NUM_CPU_CORES = number_of_cores();
 
-    if (num_cores <= 0) {
-        printf("Failed to determine the number of CPU cores.\n");
-        return 1;
-    }
-
-    CPUStats* cpu_stats = (CPUStats*)malloc(sizeof(CPUStats) * (num_cores+1));
+    CPUStats* cpu_stats = (CPUStats*)malloc(sizeof(CPUStats) * (NUM_CPU_CORES+1));
     if (cpu_stats == NULL) {
         fprintf(stderr, "Error allocating memory for cpu_stats.\n");
         return 1;

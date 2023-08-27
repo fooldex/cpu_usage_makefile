@@ -5,9 +5,10 @@
 #include "num_cpu_cores.h"
 
 //Reader thread
-
+ static volatile int reader_alive = 0;
 
 void* Reader(void* arg) {
+    reader_alive = 1;
     CPUStats* cpu_stats = (CPUStats*)arg;
 
     while (1) {
@@ -41,4 +42,8 @@ void* Reader(void* arg) {
     }
 
     return NULL;
+}
+
+int is_reader_alive(){
+    return reader_alive;
 }

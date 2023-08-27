@@ -4,5 +4,6 @@
 #include "main.h"
 
 void* Printer(void* arg);
+int is_printer_alive();
 
 #endif

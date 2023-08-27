@@ -4,6 +4,7 @@
 #include "printer.h"
 #include "cpu_monitor.h"
 #include "num_cpu_cores.h"
+#include "watchdog.h"
 
 int main() {
     
@@ -16,7 +17,7 @@ int main() {
         return 1;
     }
 
-    pthread_t reader_thread, analyzer_thread, printer_thread;
+    pthread_t reader_thread, analyzer_thread, printer_thread, watchdog_thread;
 
     if (pthread_create(&reader_thread, NULL, Reader, cpu_stats) != 0) {
         fprintf(stderr, "Error creating reader thread.\n");
@@ -30,13 +31,20 @@ int main() {
 
     if (pthread_create(&printer_thread, NULL, Printer, cpu_stats) != 0) {
         fprintf(stderr, "Error creating printer thread.\n");
-        free(cpu_stats);
+        
         return 1;
     }
+        if (pthread_create(&watchdog_thread, NULL, Watchdog, NULL) != 0) {
+        fprintf(stderr, "Error creating watchdog thread.\n");
+       
+        return 1;
+    }
+
 
     pthread_join(reader_thread, NULL);
     pthread_join(analyzer_thread, NULL);
     pthread_join(printer_thread, NULL);
+    pthread_join(watchdog_thread, NULL);
 
     free(cpu_stats);
     return 0;

@@ -3,7 +3,12 @@
 #include "num_cpu_cores.h"
 #include <assert.h>
 
+static volatile int analyzer_alive = 0;
+
 void* Analyzer(void* arg) {
+
+    analyzer_alive = 1;
+
     CPUStats* cpu_stats = (CPUStats*)arg;
     CPUStats* prev_cpu_stats = (CPUStats*)malloc(sizeof(CPUStats) * (NUM_CPU_CORES+1));
     if (!prev_cpu_stats) {
@@ -69,4 +74,8 @@ void* Analyzer(void* arg) {
 
     free(prev_cpu_stats);
     return NULL;
+}
+
+int is_analyzer_alive(){
+    return analyzer_alive;
 }

@@ -4,5 +4,6 @@
 #include "main.h"
 
 void* Analyzer(void* arg);
+int is_analyzer_alive();
 
 #endif

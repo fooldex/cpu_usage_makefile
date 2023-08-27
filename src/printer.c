@@ -2,7 +2,11 @@
 #include "cpu_monitor.h"
 #include "num_cpu_cores.h"
 
+
+static volatile int printer_alive = 0;
 void* Printer(void* arg) {
+
+    printer_alive = 1;
     CPUStats* cpu_stats = (CPUStats*)arg;
     int first_iteration = 1;
 
@@ -32,4 +36,8 @@ void* Printer(void* arg) {
 
 
     return NULL;
+}
+
+int is_printer_alive(){
+    return printer_alive;
 }

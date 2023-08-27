@@ -4,7 +4,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra
 LDFLAGS = -pthread
 
-SOURCES = reader.c analyzer.c printer.c cpu_monitor.c num_cpu_cores.c main.c
+SOURCES = reader.c analyzer.c printer.c cpu_monitor.c num_cpu_cores.c main.c watchdog.c
 OBJECTS = $(SOURCES:.c=.o)
 
 EXECUTABLE = main

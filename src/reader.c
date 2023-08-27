@@ -1,4 +1,5 @@
 #include "reader.h"
+#include "logger.h"
 #include <string.h>
 #include "cpu_monitor.h"
 #include <assert.h>
@@ -15,6 +16,8 @@ void* Reader(void* arg) {
         FILE* file = fopen("/proc/stat", "r");
 
         assert(file != NULL && "Error opening /proc/stat file.\n");
+
+        Logger_Log("Successfully opened /proc/stat file.");
 
         char buffer[256];
         int cpu_id = 0;
@@ -37,6 +40,7 @@ void* Reader(void* arg) {
         fclose(file);
 
         pthread_cond_signal(&cpu_stats_updated);
+       
 
         sleep(INTERVAL); 
     }

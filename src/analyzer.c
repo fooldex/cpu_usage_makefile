@@ -1,4 +1,5 @@
 #include "analyzer.h"
+#include "logger.h"
 #include "cpu_monitor.h"
 #include "num_cpu_cores.h"
 #include <assert.h>
@@ -56,6 +57,7 @@ void* Analyzer(void* arg) {
 
             
             cpu_stats[core_id].CPU_Usage = ((double)(totald - idled) / totald) * 100.0;
+            
 
             assert(cpu_stats[core_id].CPU_Usage >= 0 && cpu_stats[core_id].CPU_Usage <= 100);
 
@@ -69,6 +71,7 @@ void* Analyzer(void* arg) {
         }
 
         pthread_mutex_unlock(&cpu_stats_mutex);
+        Logger_Log("CPU usage for cores is calculated for an iteration.");
         
     }
 

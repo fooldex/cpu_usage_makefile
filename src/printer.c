@@ -1,4 +1,5 @@
 #include "printer.h"
+#include "logger.h"
 #include "cpu_monitor.h"
 #include "num_cpu_cores.h"
 
@@ -31,6 +32,7 @@ void* Printer(void* arg) {
         printf("\n");
 
         first_iteration = 0;
+        Logger_Log("Printing results for an iteration.\n");
        
     }
 

@@ -5,6 +5,7 @@
 #include "cpu_monitor.h"
 #include "num_cpu_cores.h"
 #include "watchdog.h"
+#include "logger.h"
 
 int main() {
     
@@ -17,7 +18,7 @@ int main() {
         return 1;
     }
 
-    pthread_t reader_thread, analyzer_thread, printer_thread, watchdog_thread;
+    pthread_t reader_thread, analyzer_thread, printer_thread, watchdog_thread, logger_thread;
 
     if (pthread_create(&reader_thread, NULL, Reader, cpu_stats) != 0) {
         fprintf(stderr, "Error creating reader thread.\n");
@@ -40,11 +41,18 @@ int main() {
         return 1;
     }
 
+        if (pthread_create(&logger_thread, NULL, Logger_thread, NULL) != 0) {
+        fprintf(stderr, "Error creating logger thread.\n");
+       
+        return 1;
+    }
+
 
     pthread_join(reader_thread, NULL);
     pthread_join(analyzer_thread, NULL);
     pthread_join(printer_thread, NULL);
     pthread_join(watchdog_thread, NULL);
+    pthread_join(logger_thread, NULL);
 
     free(cpu_stats);
     return 0;

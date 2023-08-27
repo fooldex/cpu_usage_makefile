@@ -1,0 +1,54 @@
+Successfully opened /proc/stat file.
+CPU usage for cores is calculated for an iteration.
+Successfully opened /proc/stat file.
+Printing results for an iteration.
+
+CPU usage for cores is calculated for an iteration.
+Successfully opened /proc/stat file.
+Printing results for an iteration.
+
+CPU usage for cores is calculated for an iteration.
+Successfully opened /proc/stat file.
+CPU usage for cores is calculated for an iteration.
+Printing results for an iteration.
+
+Successfully opened /proc/stat file.
+CPU usage for cores is calculated for an iteration.
+Printing results for an iteration.
+
+Successfully opened /proc/stat file.
+CPU usage for cores is calculated for an iteration.
+Printing results for an iteration.
+
+Printing results for an iteration.
+
+Successfully opened /proc/stat file.
+CPU usage for cores is calculated for an iteration.
+Printing results for an iteration.
+
+Successfully opened /proc/stat file.
+CPU usage for cores is calculated for an iteration.
+Printing results for an iteration.
+
+Successfully opened /proc/stat file.
+CPU usage for cores is calculated for an iteration.
+Printing results for an iteration.
+
+Successfully opened /proc/stat file.
+CPU usage for cores is calculated for an iteration.
+Successfully opened /proc/stat file.
+CPU usage for cores is calculated for an iteration.
+Printing results for an iteration.
+
+Successfully opened /proc/stat file.
+CPU usage for cores is calculated for an iteration.
+Printing results for an iteration.
+
+Successfully opened /proc/stat file.
+CPU usage for cores is calculated for an iteration.
+Printing results for an iteration.
+
+Successfully opened /proc/stat file.
+CPU usage for cores is calculated for an iteration.
+Printing results for an iteration.
+

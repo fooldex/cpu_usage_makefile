@@ -5,5 +5,7 @@
 
 extern pthread_mutex_t cpu_stats_mutex;
 extern pthread_cond_t cpu_stats_updated;
+extern pthread_cond_t print_finished; 
+extern pthread_cond_t calculation_finished; 
 
-#endif /* CPU_MONITOR_H */
+#endif

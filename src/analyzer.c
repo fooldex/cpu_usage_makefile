@@ -19,15 +19,17 @@ void* Analyzer(void* arg) {
     
 
     
-    for (int core_id = 0; core_id <= NUM_CPU_CORES; core_id++) {
+   /* for (int core_id = 0; core_id <= NUM_CPU_CORES; core_id++) {
         prev_cpu_stats[core_id] = cpu_stats[core_id];
-    }
+    }*/
     
     while (1) {
-        pthread_mutex_lock(&cpu_stats_mutex);
-
         
+        
+        pthread_mutex_lock(&cpu_stats_mutex);
         pthread_cond_wait(&cpu_stats_updated, &cpu_stats_mutex);
+        
+        
 
 
         
@@ -67,11 +69,11 @@ void* Analyzer(void* arg) {
 
 
             prev_cpu_stats[core_id] = cpu_stats[core_id];
-            pthread_cond_signal(&cpu_stats_updated);
+            
         }
-
+        Logger_Log("CPU usage for cores is calculated for an iteration:");
         pthread_mutex_unlock(&cpu_stats_mutex);
-        Logger_Log("CPU usage for cores is calculated for an iteration.");
+        pthread_cond_signal(&calculation_finished);
         
     }
 

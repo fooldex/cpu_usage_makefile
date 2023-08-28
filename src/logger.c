@@ -5,21 +5,13 @@
 #include <string.h>
 #include <unistd.h>
 
-#define MAX_LOG_SIZE 1000
-
-typedef struct {
-    pthread_t thread_id;
-    char log_messages[MAX_LOG_SIZE][256];
-    int num_messages;
-    pthread_mutex_t log_mutex;
-} Logger;
-
 Logger logger;
+pthread_mutex_t log_mutex = PTHREAD_MUTEX_INITIALIZER; 
 
 void* Logger_thread(void* arg) {
     (void) arg;
     while (1) {
-        pthread_mutex_lock(&logger.log_mutex);
+        pthread_mutex_lock(&log_mutex);
         if (logger.num_messages > 0) {
             FILE* log_file = fopen("log.txt", "a");
             if (log_file) {
@@ -30,9 +22,9 @@ void* Logger_thread(void* arg) {
             }
             logger.num_messages = 0;
         }
-        pthread_mutex_unlock(&logger.log_mutex);
+        pthread_mutex_unlock(&log_mutex);
 
-        sleep(1); // Adjust the sleep interval as needed
+        sleep(1); 
     }
 
     return NULL;
@@ -41,10 +33,10 @@ void* Logger_thread(void* arg) {
 
 
 void Logger_Log(const char* message) {
-    pthread_mutex_lock(&logger.log_mutex);
+    pthread_mutex_lock(&log_mutex);
     if (logger.num_messages < MAX_LOG_SIZE) {
         strcpy(logger.log_messages[logger.num_messages], message);
         logger.num_messages++;
     }
-    pthread_mutex_unlock(&logger.log_mutex);
+    pthread_mutex_unlock(&log_mutex);
 }

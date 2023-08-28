@@ -11,13 +11,17 @@
 void* Reader(void* arg) {
     reader_alive = 1;
     CPUStats* cpu_stats = (CPUStats*)arg;
-
+    
     while (1) {
+        
+        
+        
+        pthread_mutex_lock(&cpu_stats_mutex);
         FILE* file = fopen("/proc/stat", "r");
 
         assert(file != NULL && "Error opening /proc/stat file.\n");
 
-        Logger_Log("Successfully opened /proc/stat file.");
+        
 
         char buffer[256];
         int cpu_id = 0;
@@ -39,11 +43,18 @@ void* Reader(void* arg) {
 
         fclose(file);
 
-        pthread_cond_signal(&cpu_stats_updated);
-       
+        
+        pthread_mutex_unlock(&cpu_stats_mutex);
+        Logger_Log("Successfully opened /proc/stat file. Reading values...");
+    
+        
 
-        sleep(INTERVAL); 
+        
+        pthread_cond_signal(&cpu_stats_updated);
+
+        sleep(INTERVAL);
     }
+    
 
     return NULL;
 }

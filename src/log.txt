@@ -1,54 +1,25 @@
-Successfully opened /proc/stat file.
-CPU usage for cores is calculated for an iteration.
-Successfully opened /proc/stat file.
-Printing results for an iteration.
+Successfully opened /proc/stat file. Reading values...
+Successfully opened /proc/stat file. Reading values...
+CPU usage for cores is calculated for an iteration:
+No output for first file reading due to collecting values for calculation.
+No output for first file reading due to collecting values for calculation.
 
-CPU usage for cores is calculated for an iteration.
-Successfully opened /proc/stat file.
-Printing results for an iteration.
 
-CPU usage for cores is calculated for an iteration.
-Successfully opened /proc/stat file.
-CPU usage for cores is calculated for an iteration.
-Printing results for an iteration.
+Successfully opened /proc/stat file. Reading values...
+CPU usage for cores is calculated for an iteration:
+CPU Usage for core #1: 29.79%
+CPU Usage for core #2: 23.16%
 
-Successfully opened /proc/stat file.
-CPU usage for cores is calculated for an iteration.
-Printing results for an iteration.
 
-Successfully opened /proc/stat file.
-CPU usage for cores is calculated for an iteration.
-Printing results for an iteration.
+Successfully opened /proc/stat file. Reading values...
+CPU usage for cores is calculated for an iteration:
+CPU Usage for core #1: 12.24%
+CPU Usage for core #2: 11.58%
 
-Printing results for an iteration.
 
-Successfully opened /proc/stat file.
-CPU usage for cores is calculated for an iteration.
-Printing results for an iteration.
+Successfully opened /proc/stat file. Reading values...
+CPU usage for cores is calculated for an iteration:
+CPU Usage for core #1: 12.50%
+CPU Usage for core #2: 13.04%
 
-Successfully opened /proc/stat file.
-CPU usage for cores is calculated for an iteration.
-Printing results for an iteration.
-
-Successfully opened /proc/stat file.
-CPU usage for cores is calculated for an iteration.
-Printing results for an iteration.
-
-Successfully opened /proc/stat file.
-CPU usage for cores is calculated for an iteration.
-Successfully opened /proc/stat file.
-CPU usage for cores is calculated for an iteration.
-Printing results for an iteration.
-
-Successfully opened /proc/stat file.
-CPU usage for cores is calculated for an iteration.
-Printing results for an iteration.
-
-Successfully opened /proc/stat file.
-CPU usage for cores is calculated for an iteration.
-Printing results for an iteration.
-
-Successfully opened /proc/stat file.
-CPU usage for cores is calculated for an iteration.
-Printing results for an iteration.
 
